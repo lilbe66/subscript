@@ -718,7 +718,8 @@ def get_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--version",
         action="version",
-        version="%(prog)s (subscript version " + subscript.__version__ + ")",
+#        version="%(prog)s (subscript version " + subscript.__version__ + ")",
+        version = "1.1.1_test"
     )
     return parser
 
