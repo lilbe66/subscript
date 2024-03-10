@@ -3,6 +3,7 @@
 
 See also the assosiated runrms.yml YAML file paths in SETUP variable.
 """
+
 import argparse
 import datetime
 import getpass
@@ -18,7 +19,7 @@ import time
 
 import yaml
 
-from subscript import getLogger
+from subscript import detect_os, getLogger
 
 logger = getLogger(__name__)
 
@@ -288,7 +289,7 @@ class RunRMS:
         self.warn_empty_version = False
         self.aps_toolbox_path = None
 
-        self.detect_os()
+        self.osver = detect_os(RHEL_ID)
 
         self.oldpythonpath = ""
         if "PYTHONPATH" in os.environ:
@@ -303,14 +304,6 @@ class RunRMS:
             "\nRunning <{0}>. Type <{0} -h> for help\n".format(THISSCRIPT),
             _BColors.ENDC,
         )
-
-    def detect_os(self):
-        """Detect operating system string in runtime, just use default if not found."""
-        if RHEL_ID.is_file():
-            with open(RHEL_ID, "r", encoding="utf-8") as buffer:
-                major = buffer.read().split(" ")[6].split(".")[0].replace("'", "")
-                self.osver = "x86_64_RH_" + str(major)
-                logger.debug("RHEL version found in %s", RHEL_ID)
 
     def do_parse_args(self, args):
         """Parse command line args."""

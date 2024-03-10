@@ -1,5 +1,6 @@
 """fmuobs is a converter tool for observation files used in assisted
 history matching"""
+
 import argparse
 import logging
 import os
@@ -10,7 +11,7 @@ from typing import Optional, Tuple, Union
 
 import pandas as pd
 import yaml
-from ert import ErtScript
+from ert.config import ErtScript
 from ert.shared.plugins.plugin_manager import hook_implementation  # type: ignore
 
 from subscript import __version__, getLogger

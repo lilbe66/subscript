@@ -1,5 +1,6 @@
 """Tool to stack/pivot CSV files, exposed as command line client,
 ERT workflow and ERT forward model"""
+
 import argparse
 import logging
 import re
@@ -8,7 +9,7 @@ import warnings
 from typing import Pattern
 
 import pandas as pd
-from ert import ErtScript
+from ert.config import ErtScript
 from ert.shared.plugins.plugin_manager import hook_implementation  # type: ignore
 
 from subscript import __version__, getLogger
